@@ -21,7 +21,7 @@ class Announce extends PbController {
 		global $viewhelper;
 		$viewhelper->setTitle(L("announce", "tpl"));
 		$types = cache_read("type");
-		$viewhelper->setPosition(L("announce", "tpl"), "index.php?do=announce");
+		$viewhelper->setPosition('test', "index.php?do=announce");
 		if (isset($_GET['title'])) {
 			$title = trim($_GET['title']);
 			$res = $this->announcement->findBySubject($title);

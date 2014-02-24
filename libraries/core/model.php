@@ -53,10 +53,14 @@ class PbModel
 	}
 	
 	//echo 'Your val is $name,and is not exsit in this class!';
-	function __get($property) {}
+	public function __get($property) {
+		return $this->$property;
+	}
 	
 	//echo 'Your val is '.$name.'=>'.$value;
-	function __set($property, $value) {}	
+	public function __set($property, $value) {
+		$this->$property = $value;
+	}	
 	
 	function query() {
 		$args	  = func_get_args();

@@ -130,10 +130,10 @@ function smarty_block_getdata($params, $content, Smarty_Internal_Template $sTemp
 		$conditions[] = "type_id=".intval($_GET['producttypeid']);
 	}
 	if (!empty($params['companyid'])) {
-		$conditions[] = "company_id=".$params['companyid'];
+		$conditions[] = "company_id=".intval($params['companyid']);
 	}
 	if (!empty($params['typeid'])) {
-		$conditions[] = "type_id=".$params['typeid'];
+		$conditions[] = "type_id=".intval($params['typeid']);
 	}
 	if(empty($sTemplate->block_data[$iTags]))
 	{

@@ -61,6 +61,6 @@ $attachment_dir = 'attachment';
 /**
  * for install, and control panel
  */
-$app_lang = 'zh-cn';
+$app_lang = 'en-us';
 $cfg_checkip = 0;
 //$debug=4;

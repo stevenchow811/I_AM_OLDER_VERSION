@@ -20,7 +20,7 @@ if (isset($_POST['save'])) {
 	$vals['link_man'] = $_POST['company']['link_man'];
 	$vals['tel'] = $company->getPhone($_POST['data']['telcode'],$_POST['data']['telzone'],$_POST['data']['tel']);
 	$vals['fax'] = $company->getPhone($_POST['data']['faxcode'],$_POST['data']['faxzone'],$_POST['data']['fax']);
-	$vals['name'] = strip_tags($_POST['company']['name']);
+	if(isset($_POST['company']['name'])) $vals['name'] = strip_tags($_POST['company']['name']);
 	$vals['mobile'] = strip_tags($_POST['company']['mobile']);
 	$vals['email'] = $_POST['company']['email'];
 	$vals['address'] = $_POST['company']['address'];
@@ -29,6 +29,7 @@ if (isset($_POST['save'])) {
 		list($longi, $lati) = explode(",", $_POST['maplocation']);
 		$pdb->Execute("REPLACE INTO {$tb_prefix}companyfields SET company_id=".$companyinfo['id'].",map_longitude='{$longi}',map_latitude='{$lati}'");
 	}
+	$vals = array_filter($vals);
 	$result = $company->save($vals, "update", $companyinfo['id']);
 	$pdb->Execute("DELETE FROM {$tb_prefix}spacecaches WHERE company_id='".$companyinfo['id']."'");
 	if($result){

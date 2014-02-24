@@ -35,6 +35,16 @@ class PbController extends PbObject
 		return self::$instance;
 	}
 	
+	//echo 'Your val is $name,and is not exsit in this class!';
+	public function __get($property) {
+		return $this->$property;
+	}
+	
+	//echo 'Your val is '.$name.'=>'.$value;
+	public function __set($property, $value) {
+		$this->$property = $value;
+	}		
+	
 	function generateList($result)
 	{
 		$return  = null;

@@ -97,13 +97,27 @@ class Pages extends PbController {
 				$pagenav.="... <a href='".$this->_url."{$params}page={$lastpg}' title='".L('last_page', 'tpl')."'>{$lastpg}</a>";
 			}
 		}
+		$current_record = $page*$this->displaypg;
+		$start_record = $current_record - $this->displaypg;
+		if ($start_record<1) {
+			$start_record = 1;
+		}
+		if ($current_record>$total_record) {
+			$current_record = $total_record;
+		}
 		$tpl_file = $this->pagetpl.$smarty->tpl_ext;
 		$smarty->assign("pages", $pagenav);
+		$smarty->assign("start", $start_record);
+		$smarty->assign("end", $current_record);
+		$smarty->assign("count", $total_record);
+//		$smarty->assign("prev", $this->previouspage_link);
+		$smarty->assign("middle", $pagenav);
+//		$smarty->assign("next", $this->nextpage_link);
 		if (!empty($this->pagetpl_dir)) {
 			$tpl_file = $this->pagetpl_dir.DS.$this->pagetpl.$smarty->tpl_ext;
 		}
 		if (!$viewhelper->tpl_exists($tpl_file)) {
-			$tpl_file = 'default'.DS.$this->pagetpl.$smarty->tpl_ext;
+			$tpl_file = 'pages'.DS.$this->pagetpl.$smarty->tpl_ext;
 		}
 		$cache_id = null;
 		if ($smarty->caching) {

@@ -190,7 +190,11 @@ class Space extends PbController {
 	
 	public function detail()
 	{
+		global $pdb, $tb_prefix;
 		$this->init();
+		$id = intval($_GET['id']);
+		$info = $pdb->GetRow("SELECT * FROM {$tb_prefix}jobs WHERE id=".$id);
+		setvar("detail_item", $info);
 		$this->render($this->module."_detail");
 	}
 	

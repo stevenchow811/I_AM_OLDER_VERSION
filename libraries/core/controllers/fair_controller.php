@@ -91,6 +91,7 @@ class Fair extends PbController {
 			flash("data_not_exists");
 		}
 		$info = $this->expo->info;
+		$this->view_helper->setPosition(L("fair", "tpl"));
 		if(!empty($info)){
 			$info['typename'] = $_PB_CACHE['expotype'][$info['expotype_id']];
 			$this->view_helper->setTitle($info['typename']);

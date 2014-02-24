@@ -119,7 +119,6 @@ if (isset($_PB_CACHE['setting']['time_offset'])){
 	}
 }
 $date_line = date("Y-m-d H:i:s", $time_stamp);
-$viewhelper = new PbView();
 $conditions = null;
 $pb_userinfo = pb_get_member_info();
 if ($pb_userinfo) {
@@ -164,6 +163,7 @@ if($_SERVER['REQUEST_URI']) {
 	} 
 }
 $G = am($G,$_GET,$_POST);
+$viewhelper = new PbView();
 $pre_refer = empty($_SERVER['HTTP_REFERER'])?'':$_SERVER['HTTP_REFERER'];
 if($gzipcompress && function_exists('ob_gzhandler')) {
 	ob_start('ob_gzhandler');

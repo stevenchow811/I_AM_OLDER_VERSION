@@ -31,6 +31,16 @@ class PbView extends PbObject
 		$this->setPosition($G['setting']['site_name'], URL."index.php");
 	}
 	
+	//echo 'Your val is $name,and is not exsit in this class!';
+	public function __get($property) {
+		return $this->$property;
+	}
+	
+	//echo 'Your val is '.$name.'=>'.$value;
+	public function __set($property, $value) {
+		$this->$property = $value;
+	}	
+	
 	function setMetaDescription($meta_description)
 	{
 		$this->metaDescription = mb_substr(pb_strip_spaces(strip_tags(pb_lang_split($meta_description))), 0, 100);

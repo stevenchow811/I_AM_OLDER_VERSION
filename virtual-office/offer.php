@@ -356,8 +356,6 @@ if(isset($_POST['refresh'])){
 }
 $amount = 0;
 $amount = $trade->findCount(null, $conditions);
-//$page->setPagenav($amount);
-//$result = $trade->findAll("*", null, $conditions, "Trade.submit_time DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
 $result = $trade->findAll("*", null, $conditions, "Trade.submit_time DESC", 0, $trade->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
@@ -365,7 +363,6 @@ if (!empty($result)) {
 	}
 	setvar("Items", $result);
 }
-//uaAssign(array("ByPages"=>$page->getPagenav()));
 setvar("OFFER_MODERATE_POINT", $G['setting']['offer_moderate_point']);
 setvar("CheckStatus", $G['typeoption']["check_status"]);
 setvar("Amount", $amount);
